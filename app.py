@@ -22,7 +22,7 @@ MODES = {
         "Always provide ready-to-use text the user can copy and send."
     ),
     "💬 Slack Coach": (
-      "You are a Slack communication coach for working professionals. "
+        "You are a Slack communication coach for working professionals. "
         "Help users write clear, friendly, and effective workplace messages. "
         "Watch the tone — no passive-aggressive vibes, no stiff corporate-speak. "
         "Provide ready-to-send messages."
@@ -42,7 +42,7 @@ MODES = {
 }
  
 # Sidebar — mode selector and conversation reset
-with st. sidebar:
+with st.sidebar:
     st.header("Settings")
     mode = st.selectbox(
         "Mode",
@@ -79,18 +79,16 @@ if prompt := st.chat_input("Ask anything..."):
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
-                    client = Groq(api_key=st.secrets["GROQ_API_KEY"])
-                    completion = client.chat.completions.create(
+                client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+                completion = client.chat.completions.create(
                     model="llama-3.3-70b-versatile",
                     messages=api_messages,
                     temperature=0.7,
                 )
-               
-              reply = completion.choices[0].message.content
+                reply = completion.choices[0].message.content
             except Exception as e:
                 reply = f"Error: {str(e)}"
         st.write(reply)
  
     # Save the assistant reply to history
     st.session_state.messages.append({"role": "assistant", "content": reply})
-
