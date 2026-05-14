@@ -79,8 +79,8 @@ if prompt := st.chat_input("Ask anything..."):
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
-                client = Groq(api_key=st.secrets["GROQ_API_KEY"])
-              completion = client.chat.completions.create(
+                    client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+                    completion = client.chat.completions.create(
                     model="llama-3.3-70b-versatile",
                     messages=api_messages,
                     temperature=0.7,
