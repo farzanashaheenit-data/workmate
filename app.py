@@ -85,12 +85,12 @@ if prompt := st.chat_input("Ask anything..."):
                     messages=api_messages,
                     temperature=0.7,
                 )
-                reply = completion.choices[0].message.content
-             except Exception as e:
-                 reply = f"Error: {str(e)}"
+               
+              reply = completion.choices[0].message.content
+            except Exception as e:
+                reply = f"Error: {str(e)}"
         st.write(reply)
  
     # Save the assistant reply to history
     st.session_state.messages.append({"role": "assistant", "content": reply})
-
 
